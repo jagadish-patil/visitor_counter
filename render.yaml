@@ -1,0 +1,7 @@
+services:
+  - name: visitor-tracker
+    type: web
+    env: docker
+    repo: https://github.com/your_username/your_repo_name
+    buildCommand: "./mvnw clean install"
+    startCommand: "java -jar target/your-jar-file.jar"
