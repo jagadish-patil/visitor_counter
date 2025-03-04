@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visitor Tracker</title>
+</head>
+<body>
+    <h1>Welcome to My Website</h1>
+    <p>Total Visitors: <span id="totalVisitors">0</span></p>
+    <p>Unique Visitors Today: <span id="uniqueVisitors">0</span></p>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: "/api/visitors/track",
+                method: "GET",
+                success: function (data) {
+                    $("#totalVisitors").text(data.totalVisitors);
+                    $("#uniqueVisitors").text(data.uniqueVisitors);
+                },
+                error: function () {
+                    console.error("Failed to fetch visitor data");
+                }
+            });
+        });
+    </script>
+</body>
+</html>
